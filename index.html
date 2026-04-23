@@ -39,8 +39,11 @@
     }
 
     .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
-    .logo-img { height: 35px; width: auto; filter: brightness(0) invert(1); }
-
+    .logo-img {
+  height: 60px;        /* increase size */
+  width: auto;
+  filter: brightness(0) invert(1);
+}
     nav { display: flex; align-items: center; }
     nav a { color: white; margin-left: 1.8rem; text-decoration: none; font-size: 0.9rem; font-weight: 500; opacity: 0.85; }
 
@@ -145,9 +148,8 @@
 
   <header>
     <a href="#" class="logo-container">
-      <img src="logo.png" alt="Logo" class="logo-img" />
-      <strong style="font-size:1.45rem;">Edible Farms</strong>
-    </a>
+  <img src="logo.png" alt="EdibleFarms Logo" class="logo-img" />
+</a>
     <nav>
       <a href="#">Home</a>
       <a href="#">About Us</a>

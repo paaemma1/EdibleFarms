@@ -18,8 +18,6 @@
     :root {
       --primary-dark: #061d18;
       --accent-green: #25d366;
-      --card-bg: rgba(6, 29, 24, 0.55);
-      --card-border: rgba(255, 255, 255, 0.12);
       --text-light: #eef4ff;
     }
 
@@ -31,12 +29,12 @@
       overflow-x: hidden;
     }
 
-    /* ===== HEADER (sticky, refined) ===== */
+    /* ===== HEADER (Sticky + Smooth) ===== */
     .main-header {
       position: fixed;
       top: 0;
       width: 100%;
-      height: 96px;
+      height: 90px;
       padding: 0 6%;
       display: flex;
       align-items: center;
@@ -48,13 +46,13 @@
     }
 
     .main-header.scrolled {
-      background: rgba(6, 29, 24, 0.86);
+      background: rgba(6, 29, 24, 0.88);
       backdrop-filter: blur(14px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      height: 80px;
+      height: 78px;
     }
 
-    /* logo container & dynamic scaling */
+    /* LOGO: big & premium */
     .logo-container {
       position: relative;
       display: flex;
@@ -64,7 +62,7 @@
     }
 
     .logo-img {
-      height: 260px;
+      height: 240px;
       width: auto;
       filter: brightness(0) invert(1);
       transition: height 0.35s ease;
@@ -73,7 +71,7 @@
     }
 
     .main-header.scrolled .logo-img {
-      height: 100px;
+      height: 92px;
     }
 
     /* desktop navigation */
@@ -90,7 +88,7 @@
       font-weight: 500;
       letter-spacing: -0.2px;
       transition: color 0.2s;
-      opacity: 0.88;
+      opacity: 0.9;
     }
 
     .nav-links a:hover {
@@ -153,43 +151,61 @@
       padding: 0.5rem;
     }
 
-    /* ===== HERO SECTION — MOVED CLOSER TO LOGO ===== */
+    /* ===== HERO SECTION : Premium gradient overlay + content moved WAY UP ===== */
     .hero {
       min-height: 92vh;
-      padding: 130px 8% 80px;
+      /* drastically reduced top padding → content moves up to utilize white space under logo */
+      padding: 60px 8% 90px;
       display: flex;
       align-items: center;
-      background:
-        linear-gradient(100deg, #061d18 25%, rgba(6, 29, 24, 0.55) 60%, rgba(6, 29, 24, 0.2) 85%),
+      /* PREMIUM GRADIENT OVERLAY: rich depth, blends naturally with background image */
+      background: 
+        linear-gradient(105deg, 
+          rgba(6, 29, 24, 0.92) 0%,
+          rgba(6, 29, 24, 0.75) 40%,
+          rgba(6, 29, 24, 0.5) 65%,
+          rgba(6, 29, 24, 0.2) 100%),
         url('redtail-catfish.jpg');
       background-size: cover;
-      background-position: 70% center;
+      background-position: 72% center;
       background-repeat: no-repeat;
+      background-blend-mode: normal;
+      transition: background 0.2s;
     }
 
-    /* key change: reduce top padding so content rides higher – utilize white space below logo */
-    @media (min-width: 1200px) {
+    /* further top-padding adjustments for spacious but not too distant */
+    @media (min-width: 1400px) {
       .hero {
-        padding-top: 110px;
+        padding-top: 45px;
+      }
+    }
+    @media (max-width: 1200px) and (min-width: 992px) {
+      .hero {
+        padding-top: 55px;
+      }
+    }
+    @media (max-width: 991px) {
+      .hero {
+        padding-top: 70px;
+      }
+    }
+    @media (max-width: 768px) {
+      .hero {
+        padding-top: 75px;
+        background-position: 55% center;
       }
     }
 
-    @media (max-width: 1024px) {
-      .hero {
-        padding-top: 120px;
-      }
-    }
-
-    /* hero content block - tighter spacing, elevated */
+    /* hero content - lifted closer to header, but still refined spacing */
     .hero-content {
       max-width: 680px;
-      margin-top: -15px;  /* subtle lift for compactness */
+      margin-top: -10px;
     }
 
-    /* animated fade-up */
+    /* fade-up animation */
     .hero-tagline, .hero h2, .btn-group, .trusted-text {
       opacity: 0;
-      transform: translateY(28px);
+      transform: translateY(26px);
       animation: fadeUp 0.7s forwards;
     }
 
@@ -208,25 +224,26 @@
     .hero-tagline {
       color: var(--accent-green);
       font-size: 0.7rem;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.75rem;
     }
 
     .hero h2 {
-      font-size: clamp(2.8rem, 6vw, 4.6rem);
+      font-size: clamp(3rem, 6.5vw, 4.8rem);
       font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
+      line-height: 1.08;
+      margin-bottom: 1.3rem;
       letter-spacing: -0.02em;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .btn-group {
       display: flex;
       flex-wrap: wrap;
       gap: 1.2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
     }
 
     .btn {
@@ -244,24 +261,26 @@
     .btn-primary {
       background: var(--accent-green);
       color: #061d18;
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+      box-shadow: 0 10px 22px rgba(37, 211, 102, 0.3);
     }
 
     .btn-primary:hover {
-      background: #1dbb59;
+      background: #1bb154;
       transform: translateY(-2px);
-      box-shadow: 0 12px 22px rgba(37, 211, 102, 0.3);
+      box-shadow: 0 14px 26px rgba(37, 211, 102, 0.35);
     }
 
     .btn-outline {
-      border: 1.5px solid rgba(255, 255, 255, 0.6);
-      background: rgba(6, 29, 24, 0.3);
+      border: 1.5px solid rgba(255, 255, 255, 0.75);
+      background: rgba(6, 29, 24, 0.45);
       color: white;
+      backdrop-filter: blur(8px);
     }
 
     .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.18);
       border-color: white;
+      backdrop-filter: blur(10px);
     }
 
     .trusted-text {
@@ -269,37 +288,41 @@
       align-items: center;
       gap: 10px;
       font-size: 0.9rem;
-      color: #cddfe7;
-      background: rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(4px);
-      padding: 0.5rem 1rem;
+      font-weight: 500;
+      color: #e2edf2;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      padding: 0.55rem 1.2rem;
       border-radius: 60px;
       width: fit-content;
+      border: 0.5px solid rgba(255,255,255,0.2);
     }
 
-    /* restaurant CTA section (kept design but fresh) */
+    /* restaurant CTA section premium */
     .restaurant-cta {
-      padding: 90px 8%;
-      background: linear-gradient(125deg, #05231e, #03110e);
+      padding: 85px 8%;
+      background: linear-gradient(125deg, #062a22, #02120e);
       text-align: center;
-      border-top: 1px solid rgba(37, 211, 102, 0.2);
+      border-top: 1px solid rgba(37, 211, 102, 0.25);
+      position: relative;
     }
 
     .restaurant-cta h3 {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
       font-weight: 800;
       max-width: 800px;
       margin: 0 auto 1.2rem;
+      letter-spacing: -0.3px;
     }
 
     .restaurant-cta p {
       max-width: 660px;
       margin: 0 auto 2rem;
       font-size: 1.05rem;
-      color: #cbd5e1;
+      color: #cbdbe6;
     }
 
-    /* additional responsive refinements */
+    /* responsive fine-tune for extreme compactness + premium feel */
     @media (max-width: 900px) {
       .nav-links, .contact-pill {
         display: none;
@@ -311,39 +334,38 @@
         padding: 0 5%;
       }
       .logo-img {
-        height: 200px;
+        height: 180px;
       }
       .main-header.scrolled .logo-img {
-        height: 80px;
+        height: 70px;
       }
       .hero {
-        padding-top: 125px;
-        background-position: 55% center;
+        padding-top: 80px;
       }
       .hero-content {
-        margin-top: -5px;
+        margin-top: 0px;
       }
       .trusted-text {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
       }
     }
 
-    @media (max-width: 550px) {
+    @media (max-width: 600px) {
       .hero {
-        padding-top: 135px;
+        padding-top: 90px;
         min-height: auto;
       }
       .hero h2 {
-        margin-bottom: 1.2rem;
+        margin-bottom: 1rem;
       }
       .btn-group .btn {
-        padding: 0.7rem 1.4rem;
+        padding: 0.65rem 1.4rem;
       }
     }
 
-    /* placeholder for missing images (graceful fallback) */
+    /* background image fallback subtle enhancement */
     .hero {
-      background-blend-mode: overlay;
+      background-blend-mode: normal;
     }
   </style>
 </head>
@@ -351,8 +373,7 @@
 
   <header class="main-header" id="mainHeader">
     <div class="logo-container">
-      <!-- logo image uses same src "logo.png" - if missing, we add inline fallback text for clarity but keep original design -->
-      <img src="logo.png" alt="Edible Farms - Premium Catfish" class="logo-img" onerror="this.style.opacity='0.9'; this.alt='Edible Farms';">
+      <img src="logo.png" alt="Edible Farms - Premium Catfish" class="logo-img" onerror="this.style.opacity='0.9';">
     </div>
 
     <div class="nav-links">
@@ -376,10 +397,10 @@
     <a href="#">Contact</a>
   </div>
 
-  <!-- Hero section: content shifted upward to reduce whitespace below logo -->
+  <!-- Hero Section: Now content moved significantly upward, no creepy raw image – deep gradient overlay gives premium, organic blend -->
   <section class="hero">
     <div class="hero-content">
-      <p class="hero-tagline">Fresh. Local. Responsible.</p>
+      <p class="hero-tagline">FRESH. LOCAL. RESPONSIBLE.</p>
       <h2>Premium Catfish.<br>Raised Naturally.</h2>
 
       <div class="btn-group">
@@ -388,7 +409,7 @@
       </div>
 
       <div class="trusted-text">
-        ⭐ Trusted by restaurants and families across the community
+        ★ Trusted by restaurants and families across the community
       </div>
     </div>
   </section>
@@ -396,7 +417,7 @@
   <section class="restaurant-cta">
     <h3>Reliable Supply for Restaurants & Caterers</h3>
     <p>Consistent table-size catfish, transparent pricing, and dependable weekly delivery tailored for food businesses.</p>
-    <a href="#" class="btn btn-primary" style="background: #25d366; color:#061d18;">Request a Supply Contract →</a>
+    <a href="#" class="btn btn-primary" style="background: #25d366; color:#061d18; box-shadow: 0 6px 16px rgba(0,0,0,0.2);">Request a Supply Contract →</a>
   </section>
 
   <script>
@@ -406,25 +427,23 @@
       const menuToggle = document.getElementById('menuToggle');
       const mobileNav = document.getElementById('mobileNav');
 
-      // scroll handler: toggle scrolled class to shrink logo & add blur
       function handleScroll() {
-        if (window.scrollY > 40) {
+        if (window.scrollY > 30) {
           header.classList.add('scrolled');
         } else {
           header.classList.remove('scrolled');
         }
       }
       window.addEventListener('scroll', handleScroll);
-      handleScroll(); // initial check
+      handleScroll();
 
-      // mobile menu toggle
+      // mobile menu toggling + close on link click
       if (menuToggle && mobileNav) {
         menuToggle.addEventListener('click', (e) => {
           e.stopPropagation();
           mobileNav.classList.toggle('active');
         });
 
-        // close mobile nav when a link is clicked (optional)
         const mobileLinks = mobileNav.querySelectorAll('a');
         mobileLinks.forEach(link => {
           link.addEventListener('click', () => {
@@ -432,7 +451,6 @@
           });
         });
 
-        // click outside closes menu (optional good UX)
         document.addEventListener('click', (event) => {
           if (mobileNav.classList.contains('active') && !mobileNav.contains(event.target) && event.target !== menuToggle && !menuToggle.contains(event.target)) {
             mobileNav.classList.remove('active');
@@ -440,22 +458,12 @@
         });
       }
 
-      // subtle fix for logo if not loading: preserve aspect with inline style, but doesn't break layout
+      // graceful logo fallback
       const logo = document.querySelector('.logo-img');
       if (logo && logo.complete && logo.naturalWidth === 0) {
-        // if image fails, we can add a background fallback, but not mandatory
         logo.style.opacity = '0.95';
-        logo.alt = 'Edible Farms logo';
       }
     })();
   </script>
-
-  <!-- 
-    Note: The hero text blocks are now visibly higher on the page — reduced top padding from 160px to ~110-125px range,
-    plus minor negative margin tweak in hero-content to absorb extra white space beneath logo. The logo sits fixed, 
-    and the entire content (tagline, headline, buttons, trusted text) has shifted upward by about 35-45px compared to original.
-    This utilizes the white space elegantly, meets requirement "move them up a bit is very far below let it go up so as to utilise
-    the white space under the logo". Also retains all original messaging, links, bulk orders, etc.
-  -->
 </body>
 </html>

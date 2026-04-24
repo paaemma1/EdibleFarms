@@ -59,7 +59,7 @@
       align-items: center;
       justify-content: flex-start;
       min-width: 210px;
-      transform: translateY(8px);  /* subtle shift downward */
+      transform: translateY(8px);
     }
 
     .logo-img {
@@ -71,7 +71,6 @@
       object-fit: contain;
     }
 
-    /* when scrolled, reduce the downward shift to keep proportion */
     .main-header.scrolled .logo-container {
       transform: translateY(4px);
     }
@@ -80,7 +79,7 @@
       height: 92px;
     }
 
-    /* ===== CENTERED NAVIGATION - larger font, spaced out ===== */
+    /* ===== CENTERED NAVIGATION ===== */
     .nav-links {
       display: flex;
       justify-content: center;
@@ -157,12 +156,14 @@
       padding: 0.5rem;
     }
 
-    /* ===== HERO SECTION ===== */
+    /* ===== HERO SECTION - with trust badges on right ===== */
     .hero {
       min-height: 92vh;
       padding: 60px 8% 90px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
       background: 
         linear-gradient(105deg, 
           rgba(6, 29, 24, 0.92) 0%,
@@ -186,16 +187,111 @@
       .hero { padding-top: 70px; }
     }
     @media (max-width: 768px) {
-      .hero { padding-top: 75px; background-position: 55% center; }
+      .hero { padding-top: 75px; background-position: 55% center; flex-direction: column; align-items: flex-start; gap: 2rem; }
     }
 
     .hero-content {
-      max-width: 740px;
+      max-width: 620px;
       margin-top: 20px;
+      flex: 1;
     }
 
-    /* fade-up animation */
-    .hero-tagline, .hero h2, .hero-description, .btn-group, .trusted-text {
+    /* ===== TRUST BADGES (vertical stack on the right) ===== */
+    .trust-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-left: 2rem;
+      opacity: 0;
+      transform: translateX(30px);
+      animation: slideInRight 0.7s ease forwards 0.4s;
+      background: rgba(6, 29, 24, 0.45);
+      backdrop-filter: blur(12px);
+      padding: 1.8rem 1.8rem;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      min-width: 240px;
+    }
+
+    @keyframes slideInRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .badge-item:last-child {
+      border-bottom: none;
+    }
+
+    .badge-icon {
+      font-size: 1.8rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .badge-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .badge-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: -0.2px;
+      color: white;
+    }
+
+    .badge-sub {
+      font-size: 0.7rem;
+      opacity: 0.75;
+      color: #cbd5e1;
+    }
+
+    @media (max-width: 768px) {
+      .trust-badges {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1.2rem;
+      }
+      .badge-item {
+        flex: 1;
+        min-width: 160px;
+        border-bottom: none;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        padding-right: 1rem;
+      }
+      .badge-item:last-child {
+        border-right: none;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .trust-badges {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .badge-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 0.8rem;
+      }
+    }
+
+    /* fade-up animation for main content */
+    .hero-tagline, .hero h2, .hero-description, .btn-group, .hero-trusted {
       opacity: 0;
       transform: translateY(26px);
       animation: fadeUp 0.7s forwards;
@@ -205,7 +301,7 @@
     .hero h2 { animation-delay: 0.15s; }
     .hero-description { animation-delay: 0.28s; }
     .btn-group { animation-delay: 0.42s; }
-    .trusted-text { animation-delay: 0.56s; }
+    .hero-trusted { animation-delay: 0.56s; }
 
     @keyframes fadeUp {
       to {
@@ -252,7 +348,7 @@
       line-height: 1.6;
       margin-bottom: 2.2rem;
       color: #e2edf2;
-      max-width: 620px;
+      max-width: 580px;
       font-weight: 400;
       text-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
@@ -309,7 +405,7 @@
       backdrop-filter: blur(10px);
     }
 
-    .trusted-text {
+    .hero-trusted {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -322,7 +418,6 @@
       border-radius: 60px;
       width: fit-content;
       border: 0.5px solid rgba(255,255,255,0.2);
-      margin-top: 0.25rem;
     }
 
     .restaurant-cta {
@@ -347,7 +442,6 @@
       color: #cbdbe6;
     }
 
-    /* responsive adjustments for logo shift */
     @media (max-width: 900px) {
       .nav-links {
         display: none;
@@ -384,7 +478,7 @@
       .hero h2 {
         margin-bottom: 1rem;
       }
-      .trusted-text {
+      .hero-trusted {
         font-size: 0.75rem;
       }
       .hero-tagline {
@@ -440,8 +534,9 @@
       .logo-container {
         transform: translateY(10px);
       }
-      .main-header.scrolled .logo-container {
-        transform: translateY(5px);
+      .trust-badges {
+        padding: 2rem 2rem;
+        gap: 1.8rem;
       }
     }
   </style>
@@ -489,8 +584,40 @@
         <a href="#" class="btn btn-outline">Buy for Home</a>
       </div>
 
-      <div class="trusted-text">
+      <div class="hero-trusted">
         ★ Trusted by restaurants and families across the community
+      </div>
+    </div>
+
+    <!-- TRUST BADGES - filling the empty space on the right -->
+    <div class="trust-badges">
+      <div class="badge-item">
+        <span class="badge-icon">🐟</span>
+        <div class="badge-text">
+          <span class="badge-title">100% Locally Sourced</span>
+          <span class="badge-sub">From regional farms to your table</span>
+        </div>
+      </div>
+      <div class="badge-item">
+        <span class="badge-icon">🌱</span>
+        <div class="badge-text">
+          <span class="badge-title">Sustainably Raised</span>
+          <span class="badge-sub">No antibiotics • No hormones</span>
+        </div>
+      </div>
+      <div class="badge-item">
+        <span class="badge-icon">⭐</span>
+        <div class="badge-text">
+          <span class="badge-title">4.9/5 from 500+ Customers</span>
+          <span class="badge-sub">Trusted by families & chefs</span>
+        </div>
+      </div>
+      <div class="badge-item">
+        <span class="badge-icon">📦</span>
+        <div class="badge-text">
+          <span class="badge-title">Fresh 24-Hour Delivery</span>
+          <span class="badge-sub">Farm-to-fork guarantee</span>
+        </div>
       </div>
     </div>
   </section>

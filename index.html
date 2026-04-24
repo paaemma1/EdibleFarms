@@ -105,7 +105,7 @@
     .mobile-nav.active { transform: translateX(0); }
     .mobile-nav a { font-size: 1.7rem; font-weight: 600; color: white; text-decoration: none; }
 
-    /* hero (keep as is but slight adjustment) */
+    /* hero */
     .hero {
       min-height: 92vh;
       padding: 60px 8% 90px;
@@ -113,7 +113,7 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      background: linear-gradient(105deg, #061d18 0%, rgba(6,29,24,0.7) 40%, rgba(6,29,24,0.4) 100%), url('redtail-catfish.jpg');
+      background: linear-gradient(105deg, #061d18 0%, rgba(6,29,24,0.7) 40%, rgba(6,29,24,0.4) 100%), url('https://images.unsplash.com/photo-1570481791204-6e5f3b0d3a0c?q=80&w=2070&auto=format');
       background-size: cover;
       background-position: 72% center;
     }
@@ -187,25 +187,51 @@
     .about-image { background: linear-gradient(135deg, var(--accent-green), var(--accent-gold)); border-radius: 32px; padding: 0.5rem; }
     .about-image img { width: 100%; border-radius: 28px; display: block; object-fit: cover; height: 350px; background: #0a2a22; }
 
-    /* gallery */
+    /* gallery with real images */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
     .gallery-item {
       aspect-ratio: 1 / 1;
-      background: linear-gradient(145deg, #0a2a22, #03110e);
       border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      transition: 0.3s;
+      overflow: hidden;
       cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
     }
-    .gallery-item:hover { transform: scale(1.02); border-color: var(--accent-green); background: #0f352b; }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      border-color: var(--accent-green);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      padding: 1rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
 
     /* contact */
     .contact-grid {
@@ -334,21 +360,39 @@
       </div>
     </div>
     <div class="about-image">
-      <img src="farm scenery.png" alt="Edible Farms" style="width:100%; border-radius:28px;">
+      <img src="https://images.unsplash.com/photo-1542838132-92c533f91a7b?q=80&w=2074&auto=format" alt="Edible Farms sustainable pond" style="width:100%; border-radius:28px;">
     </div>
   </div>
 </section>
 
-<!-- Gallery -->
+<!-- Gallery Section with Actual Images -->
 <section id="gallery">
   <h2 class="section-title">From Pond to <span>Plate</span></h2>
   <div class="gallery-grid">
-    <div class="gallery-item">🐟</div>
-    <div class="gallery-item">🌿</div>
-    <div class="gallery-item">🍽️</div>
-    <div class="gallery-item">🚛</div>
-    <div class="gallery-item">🏞️</div>
-    <div class="gallery-item">⭐</div>
+    <div class="gallery-item">
+      <img src="https://www.shutterstock.com/image-photo/some-white-catfish-popularly-known-600nw-2304531177.jpg" alt="Fresh whole catfish on ice">
+      <div class="gallery-overlay">Fresh Catch</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://www.aquaculturealliance.org/wp-content/uploads/2009/09/ROGERSpic1-960x450.jpg" alt="Sustainable farm pond">
+      <div class="gallery-overlay">Natural Ponds</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://fishtank.com.ng/wp-content/uploads/2020/12/DSC_5368-1-scaled.jpg" alt="Grilled catfish dish">
+      <div class="gallery-overlay">Premium Fillets</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://emeraldtransportationsolutions.com/wp-content/uploads/2022/05/0ylzNNplW9qe0fPfGGeG9kHnnRZvqZSx1655986652.jpg" alt="Delivery truck fresh seafood">
+      <div class="gallery-overlay">Farm to Table</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://www.fao.org/fishery/services/storage/fs/fishery/images/culturedspecies//clarias/12swam-pond-clarias-harvest-Santchou.jpg" alt="Fish harvest at sunrise">
+      <div class="gallery-overlay">Morning Harvest</div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://cheflolaskitchen.com/wp-content/uploads/2025/07/Catfish-Steak.jpg" alt="Chef preparing catfish">
+      <div class="gallery-overlay">Chef Approved</div>
+    </div>
   </div>
   <p style="text-align: center; margin-top: 2rem; opacity: 0.7;">Fresh harvest, sustainable ponds, and premium fillets — captured daily.</p>
 </section>

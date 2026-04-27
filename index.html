@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   
   <!-- SEO Meta Tags -->
-  <title>Edible Farms | Premium Locally Raised Catfish | Fresh & Sustainable</title>
-  <meta name="description" content="Edible Farms brings you premium, sustainably raised catfish. Locally sourced, naturally grown with no antibiotics. Farm-to-fork delivery for restaurants and families." />
-  <meta name="keywords" content="catfish, premium catfish, fresh catfish, sustainable aquaculture, farm raised catfish, bulk catfish, local catfish" />
+  <title>Edible Farms | Fresh Locally Raised Catfish | Premium Quality</title>
+  <meta name="description" content="Edible Farms brings you premium, sustainably raised catfish. Fresh, local, and responsibly grown. Farm-to-fork delivery for restaurants and families." />
+  <meta name="keywords" content="catfish, premium catfish, fresh catfish, sustainable aquaculture, farm raised catfish, bulk catfish, local catfish, Ghana catfish" />
   <meta name="author" content="Edible Farms" />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Edible Farms | Premium Locally Raised Catfish" />
-  <meta property="og:description" content="Fresh, local, responsible catfish raised naturally. Trusted by restaurants and families." />
+  <meta property="og:title" content="Edible Farms | Fresh Locally Raised Catfish" />
+  <meta property="og:description" content="Fresh, local, responsible catfish raised naturally. Trusted by restaurants and families across Ghana." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   
@@ -179,9 +179,43 @@
       align-items: center;
     }
     .about-text p { margin-bottom: 1.2rem; color: #e2e8f0; line-height: 1.6; }
-    .about-stats { display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; }
-    .stat { background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 20px; text-align: center; flex: 1; }
-    .stat-number { font-size: 2rem; font-weight: 800; color: var(--accent-green); }
+    
+    /* Startup-friendly stats section - sweet and modern */
+    .about-stats {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .stat {
+      background: rgba(37,211,102,0.1);
+      backdrop-filter: blur(8px);
+      padding: 1.2rem;
+      border-radius: 24px;
+      text-align: center;
+      flex: 1;
+      border: 1px solid rgba(37,211,102,0.2);
+      transition: all 0.3s ease;
+    }
+    .stat:hover {
+      transform: translateY(-5px);
+      background: rgba(37,211,102,0.15);
+      border-color: var(--accent-green);
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-green), #7fffd4);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      margin-top: 0.3rem;
+    }
+    
     .about-image { background: linear-gradient(135deg, var(--accent-green), var(--accent-gold)); border-radius: 32px; padding: 0.5rem; }
     .about-image img { width: 100%; border-radius: 28px; display: block; object-fit: cover; height: 350px; background: #0a2a22; }
 
@@ -362,7 +396,7 @@
   <div class="hero-content">
     <p class="hero-tagline">FRESH. LOCAL. RESPONSIBLE.</p>
     <h2>Premium Catfish.<br>Raised Naturally.</h2>
-    <p style="margin: 1rem 0 0; color:#d1dbe6; max-width: 550px;">Ditch the mystery meat. Edible Farms brings you buttery, high-protein catfish raised with a conscience. Locally sourced, sustainably grown, and delivered fresh, farm-to-fork at its finest.</p>
+    <p style="margin: 1rem 0 0; color:#d1dbe6; max-width: 550px;">Ditch the mystery meat. Edible Farms brings you buttery, high-protein catfish raised with a conscience. Locally sourced, sustainably grown, and delivered fresh — farm-to-fork at its finest.</p>
     <div class="btn-group">
       <a href="#bulk" class="btn btn-primary">Bulk Orders →</a>
       <a href="#contact" class="btn btn-outline">Buy for Home →</a>
@@ -389,17 +423,38 @@
   </div>
 </section>
 
-<!-- About Section -->
+<!-- About Section with Startup-Friendly Stats -->
 <section id="about">
   <h2 class="section-title">About <span>Edible Farms</span></h2>
   <div class="about-grid">
     <div class="about-text">
-      <p>Founded in the heart of Accra Ghana, Edible Farms started with a simple belief: <strong>great food starts with integrity.</strong> We raise premium catfish in pristine, natural ponds with zero antibiotics or growth hormones.</p>
-      <p>Our closed-loop system respects the environment while delivering the buttery, clean taste that chefs and families love. From fingerling to harvest, every step is transparent and responsible.</p>
+      <p>Born from a passion for clean, honest food, Edible Farms is a fresh Ghanaian startup on a mission: <strong>to bring premium, responsibly raised catfish to every table.</strong> We believe great taste shouldn't come at the expense of your health or the planet.</p>
+      <p>Our journey began in Ablekuma, Accra, where we started small but dream big. Today, we're proud to partner with local restaurants and families who share our vision for sustainable, delicious seafood. No shortcuts. No mystery. Just pure, fresh catfish.</p>
+      
+      <!-- Sweet Startup Stats -->
       <div class="about-stats">
-        <div class="stat"><div class="stat-number">15+</div><div style="font-size:0.8rem;">Years of Excellence</div></div>
-        <div class="stat"><div class="stat-number">500+</div><div style="font-size:0.8rem;">Partner Families</div></div>
-        <div class="stat"><div class="stat-number">50+</div><div style="font-size:0.8rem;">Restaurants Served</div></div>
+        <div class="stat">
+          <div class="stat-number">🐟 100%</div>
+          <div class="stat-label">Fresh & Natural</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">🌱 Zero</div>
+          <div class="stat-label">Antibiotics or Hormones</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">⭐ 4.9 ★</div>
+          <div class="stat-label">Customer Love</div>
+        </div>
+      </div>
+      <div class="about-stats" style="margin-top: 0.5rem;">
+        <div class="stat">
+          <div class="stat-number">📦 Same-Week</div>
+          <div class="stat-label">Farm-to-Fork Delivery</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">🤝 Growing</div>
+          <div class="stat-label">With Our Community</div>
+        </div>
       </div>
     </div>
     <div class="about-image">

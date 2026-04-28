@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  
+  <title>Edible Farms | Shipping & Delivery Policy</title>
+  <meta name="description" content="Learn about Edible Farms shipping policy, delivery areas, freshness guarantee, and order processing times." />
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary-dark: #061d18;
+      --accent-green: #25d366;
+      --accent-gold: #d4af37;
+      --accent-cyan: #00e5ff;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #061d18 0%, #0a2a22 100%);
+      color: white;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .main-header {
+      position: fixed; top: 0; width: 100%; padding: 0 6%; height: 85px;
+      display: flex; align-items: center; justify-content: space-between;
+      z-index: 1100; transition: all 0.4s; background: transparent;
+    }
+    .main-header.scrolled {
+      background: rgba(6,29,24,0.95); backdrop-filter: blur(20px); height: 70px;
+      border-bottom: 1px solid rgba(37,211,102,0.3);
+    }
+    .logo-img { height: 220px; width: auto; filter: brightness(0) invert(1); transition: 0.3s; }
+    .main-header.scrolled .logo-img { height: 80px; }
+    .nav-links { display: flex; gap: 2.5rem; }
+    .nav-links a {
+      color: #f1f5f9; text-decoration: none; font-weight: 500; transition: 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-gold)); transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--accent-green); }
+    .menu-toggle { display: none; font-size: 2rem; cursor: pointer; color: white; }
+    .mobile-nav {
+      position: fixed; inset: 0; background: rgba(3,20,16,0.98); backdrop-filter: blur(28px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+      transform: translateX(100%); transition: transform 0.4s; z-index: 1050;
+    }
+    .mobile-nav.active { transform: translateX(0); }
+    .mobile-nav a { font-size: 1.5rem; font-weight: 600; color: white; text-decoration: none; }
+    .mobile-nav a:hover { color: var(--accent-green); }
+
+    /* Page Hero */
+    .page-hero {
+      padding: 140px 8% 60px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(6,29,24,0.9), rgba(0,229,255,0.05));
+      border-bottom: 1px solid rgba(37,211,102,0.2);
+    }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .page-hero h1 span {
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+    }
+    .page-hero p {
+      max-width: 700px; margin: 0 auto; color: #cbd5e1;
+    }
+
+    /* Content Section */
+    .content-section {
+      padding: 60px 8% 100px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .policy-card {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(12px);
+      border-radius: 32px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s;
+    }
+    .policy-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(37,211,102,0.3);
+    }
+    .policy-card h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--accent-green);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .policy-card h2 i {
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .policy-card p {
+      color: #cbd5e1;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+    .policy-card ul, .policy-card ol {
+      margin: 1rem 0 0 1.5rem;
+      color: #cbd5e1;
+    }
+    .policy-card li {
+      margin-bottom: 0.5rem;
+    }
+    .highlight-box {
+      background: rgba(37,211,102,0.1);
+      border-left: 4px solid var(--accent-green);
+      padding: 1.2rem;
+      border-radius: 16px;
+      margin: 1.5rem 0;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #02120e, #031a15);
+      padding: 3rem 8% 2rem;
+      border-top: 1px solid rgba(37,211,102,0.2);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-col h4 { margin-bottom: 1rem; font-size: 1.1rem; background: linear-gradient(135deg, var(--accent-green), var(--accent-gold)); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .footer-col a { display: block; color: #cbd5e1; text-decoration: none; margin-bottom: 0.5rem; font-size: 0.9rem; transition: 0.3s; }
+    .footer-col a:hover { color: var(--accent-green); transform: translateX(5px); }
+    .copyright { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #9ca3af; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .logo-img { height: 150px; }
+      .main-header.scrolled .logo-img { height: 60px; }
+      .policy-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="main-header" id="mainHeader">
+  <div class="logo-container">
+    <img src="logo.png" alt="Edible Farms" class="logo-img" loading="eager">
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="bulk-order.html">Bulk Orders</a>
+  </div>
+  <div class="menu-toggle" id="menuToggle">☰</div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="index.html#services">Services</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#gallery">Gallery</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="bulk-order.html">Bulk Orders</a>
+</div>
+
+<section class="page-hero" data-aos="fade-up">
+  <h1>Shipping & <span>Delivery Policy</span></h1>
+  <p>Freshness guaranteed. Learn how we deliver our premium catfish to your door.</p>
+</section>
+
+<section class="content-section">
+  <div class="policy-card" data-aos="fade-up">
+    <h2><i class="fas fa-map-marker-alt"></i> Delivery Areas</h2>
+    <p>We currently deliver to all major cities across Ghana, including:</p>
+    <ul>
+      <li><strong>Accra</strong> - All suburbs including Ablekuma, Dansoman, Spintex, East Legon, and more</li>
+      <li><strong>Tema</strong> - Community 1-25, Ashaiman, and surrounding areas</li>
+      <li><strong>Kumasi</strong> - Central business district and surrounding suburbs</li>
+      <li><strong>Takoradi</strong> - Sekondi and surrounding areas</li>
+      <li><strong>Cape Coast</strong> - City center and nearby towns</li>
+    </ul>
+    <p>For locations outside these areas, please <a href="index.html#contact" style="color: var(--accent-green);">contact us</a> to discuss delivery options.</p>
+  </div>
+
+  <div class="policy-card" data-aos="fade-up" data-aos-delay="100">
+    <h2><i class="fas fa-clock"></i> Delivery Times</h2>
+    <p><strong>Standard Delivery:</strong> 1-3 business days within Accra, 2-5 business days for other cities.</p>
+    <p><strong>Express Delivery:</strong> Same-day delivery for orders placed before 10am within Accra (additional fee applies).</p>
+    <p><strong>Bulk Orders:</strong> Scheduled delivery based on your preferred frequency (weekly, bi-weekly, or monthly).</p>
+    <div class="highlight-box">
+      <i class="fas fa-box" style="color: var(--accent-green); margin-right: 10px;"></i>
+      <strong>Freshness Guarantee:</strong> All deliveries are made using refrigerated vehicles to ensure your catfish arrives fresh and at optimal temperature.
+    </div>
+  </div>
+
+  <div class="policy-card" data-aos="fade-up" data-aos-delay="200">
+    <h2><i class="fas fa-tag"></i> Delivery Fees</h2>
+    <ul>
+      <li><strong>Within Accra:</strong> GHS 30 - GHS 50 depending on distance</li>
+      <li><strong>Tema:</strong> GHS 40 - GHS 60</li>
+      <li><strong>Kumasi / Takoradi / Cape Coast:</strong> GHS 80 - GHS 120</li>
+      <li><strong>Bulk Orders (100kg+):</strong> Free delivery within Accra and Tema</li>
+    </ul>
+    <p class="highlight-box" style="margin-top: 1rem;">📦 <strong>Special Note:</strong> Delivery fees are subject to change based on fuel prices and distance. You will be informed of the exact fee when you place your order.</p>
+  </div>
+
+  <div class="policy-card" data-aos="fade-up" data-aos-delay="300">
+    <h2><i class="fas fa-truck"></i> Order Processing</h2>
+    <p>Orders are processed within 24 hours of confirmation. For bulk orders, we require at least 48-72 hours notice to prepare your requested quantity.</p>
+    <p>Once your order is ready, you will receive:</p>
+    <ul>
+      <li>📧 Email confirmation with delivery details</li>
+      <li>📱 SMS notification on the day of delivery</li>
+      <li>📞 Phone call from our delivery driver 30 minutes before arrival</li>
+    </ul>
+  </div>
+
+  <div class="policy-card" data-aos="fade-up" data-aos-delay="400">
+    <h2><i class="fas fa-undo-alt"></i> Returns & Refunds</h2>
+    <p>Your satisfaction is our priority. If you are not satisfied with the quality of your catfish:</p>
+    <ul>
+      <li><strong>Within 2 hours of delivery:</strong> Contact us for a replacement or refund</li>
+      <li><strong>Quality issues:</strong> Photos required for verification</li>
+      <li><strong>Wrong items delivered:</strong> We will redeliver the correct items at no cost</li>
+    </ul>
+    <p>For any delivery-related concerns, please email <a href="mailto:ediblefarms000@gmail.com" style="color: var(--accent-green);">ediblefarms000@gmail.com</a> or call <a href="tel:+233546600063" style="color: var(--accent-green);">+233 54 660 0063</a>.</p>
+  </div>
+
+  <div class="policy-card" data-aos="fade-up" data-aos-delay="500">
+    <h2><i class="fas fa-check-circle"></i> Freshness Guarantee</h2>
+    <p>We take pride in delivering the freshest catfish possible. Our process ensures:</p>
+    <ul>
+      <li>🐟 Harvested within 12 hours of delivery</li>
+      <li>❄️ Kept refrigerated throughout transit</li>
+      <li>📦 Packed in insulated, leak-proof packaging</li>
+      <li>🌡️ Temperature-checked before dispatch</li>
+    </ul>
+    <div class="highlight-box" style="margin-top: 1rem;">
+      <i class="fas fa-star" style="color: var(--accent-gold);"></i> <strong>If your fish doesn't meet your expectations, we'll make it right. Promise.</strong>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col"><h4>Edible Farms</h4><p style="font-size:0.85rem;">Premium catfish, raised naturally. Local, responsible, and delicious.</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="index.html#about">About</a><a href="index.html#services">Services</a><a href="index.html#contact">Contact</a></div>
+    <div class="footer-col"><h4>Support</h4><a href="shipping-policy.html">Shipping Policy</a><a href="faq.html">FAQ</a><a href="bulk-order.html">Bulk Orders</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="tel:+233546600063">+233 54 660 0063</a><a href="mailto:ediblefarms000@gmail.com">ediblefarms000@gmail.com</a></div>
+  </div>
+  <div class="copyright">© 2025 Edible Farms — Fresh. Local. Responsible. All rights reserved.</div>
+</footer>
+
+<script>
+  AOS.init({ duration: 800, once: true });
+  const header = document.getElementById('mainHeader');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+  document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('mobileNav').classList.toggle('active'));
+  document.getElementById('mobileNav').querySelectorAll('a').forEach(link => link.addEventListener('click', () => document.getElementById('mobileNav').classList.remove('active')));
+</script>
+</body>
+</html>

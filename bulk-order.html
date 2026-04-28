@@ -7,7 +7,7 @@
   <title>Edible Farms | Bulk Order Request | Wholesale Catfish</title>
   <meta name="description" content="Request bulk catfish orders for your restaurant, hotel, or catering business. Volume discounts, weekly delivery, farm-direct pricing." />
   <meta name="keywords" content="bulk catfish, wholesale catfish, restaurant supply, catfish bulk order, Ghana catfish" />
-  meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow" />
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -140,43 +140,64 @@
     .form-group textarea {
       width: 100%;
       padding: 0.9rem 1rem;
-      background: rgba(20, 50, 45, 0.9);
-      border: 1px solid rgba(37,211,102,0.3);
+      background: #0a2a22;
+      border: 1px solid rgba(37,211,102,0.4);
       border-radius: 20px;
       color: white;
       font-family: inherit;
       font-size: 0.95rem;
       transition: all 0.3s;
     }
-    /* Fix for dropdown options - makes text readable */
-    .form-group select option {
+    
+    /* CRITICAL FIX FOR DROPDOWN OPTIONS - makes text visible */
+    .form-group select {
       background: #0a2a22;
       color: white;
-      padding: 10px;
+      cursor: pointer;
     }
-    .form-group select option:hover {
-      background: var(--accent-green);
-      color: #061d18;
+    
+    /* This targets the dropdown options when clicked/open */
+    .form-group select option {
+      background: #0a2a22 !important;
+      color: white !important;
+      padding: 12px !important;
+      font-size: 14px !important;
     }
+    
+    /* For Firefox */
+    .form-group select option {
+      background-color: #0a2a22;
+      color: #ffffff;
+    }
+    
+    /* For Chrome/Safari/Edge - forces option styling */
+    select:focus option {
+      background: #0a2a22 !important;
+      color: white !important;
+    }
+    
+    .form-group select optgroup {
+      background: #0a2a22;
+      color: white;
+    }
+    
     .form-group input:focus, 
     .form-group select:focus, 
     .form-group textarea:focus {
       outline: none;
       border-color: var(--accent-green);
-      background: rgba(30, 70, 60, 0.95);
+      background: #0f352b;
       transform: scale(1.01);
     }
     .form-group input::placeholder, 
     .form-group textarea::placeholder {
       color: rgba(255,255,255,0.5);
     }
-    /* Specific styling for select dropdown text */
-    .form-group select {
-      color: white;
-      cursor: pointer;
-    }
-    .form-group select:invalid {
-      color: rgba(255,255,255,0.6);
+    
+    /* Style for the default selected/disabled option */
+    .form-group select option:disabled {
+      color: #aaa;
+      background: #0a2a22;
     }
     
     .submit-btn {
@@ -408,24 +429,24 @@
         <div class="form-group">
           <label><i class="fas fa-weight-hanging"></i> Estimated Quantity *</label>
           <select id="quantity" required>
-            <option value="" disabled selected>Select quantity range</option>
-            <option value="25-50 kg (approx 25-50 fish)">25-50 kg (small business)</option>
-            <option value="50-100 kg (approx 50-100 fish)">50-100 kg (restaurant weekly)</option>
-            <option value="100-250 kg (approx 100-250 fish)">100-250 kg (medium restaurant)</option>
-            <option value="250-500 kg (approx 250-500 fish)">250-500 kg (large restaurant/hotel)</option>
-            <option value="500-1000 kg (approx 500-1000 fish)">500-1000 kg (multiple locations)</option>
-            <option value="1000+ kg">1000+ kg (call for custom pricing)</option>
+            <option value="" disabled selected>— Select quantity range —</option>
+            <option value="25-50 kg (approx 25-50 fish)">📦 25-50 kg (small business)</option>
+            <option value="50-100 kg (approx 50-100 fish)">📦 50-100 kg (restaurant weekly)</option>
+            <option value="100-250 kg (approx 100-250 fish)">📦 100-250 kg (medium restaurant)</option>
+            <option value="250-500 kg (approx 250-500 fish)">📦 250-500 kg (large restaurant/hotel)</option>
+            <option value="500-1000 kg (approx 500-1000 fish)">📦 500-1000 kg (multiple locations)</option>
+            <option value="1000+ kg">📦 1000+ kg (call for custom pricing)</option>
           </select>
         </div>
         <div class="form-group">
           <label><i class="fas fa-calendar-alt"></i> Delivery Frequency *</label>
           <select id="frequency" required>
-            <option value="" disabled selected>Select frequency</option>
-            <option value="One-time order">One-time order (trial)</option>
-            <option value="Weekly">Weekly - every week</option>
-            <option value="Bi-weekly">Bi-weekly - every 2 weeks</option>
-            <option value="Monthly">Monthly - once a month</option>
-            <option value="Custom schedule">Custom schedule (discuss)</option>
+            <option value="" disabled selected>— Select frequency —</option>
+            <option value="One-time order">🚚 One-time order (trial)</option>
+            <option value="Weekly">🚚 Weekly - every week</option>
+            <option value="Bi-weekly">🚚 Bi-weekly - every 2 weeks</option>
+            <option value="Monthly">🚚 Monthly - once a month</option>
+            <option value="Custom schedule">🚚 Custom schedule (discuss)</option>
           </select>
         </div>
       </div>
@@ -438,12 +459,12 @@
         <div class="form-group">
           <label><i class="fas fa-utensils"></i> Processing Preference *</label>
           <select id="processing" required>
-            <option value="" disabled selected>Select option</option>
-            <option value="Whole fish (fresh)">Whole fish (fresh) - best for restaurants</option>
-            <option value="Whole fish (frozen)">Whole fish (frozen) - longer shelf life</option>
-            <option value="Fillets (boneless)">Fillets (boneless) - ready to cook</option>
-            <option value="Steaks (cut portions)">Steaks (cut portions) - uniform sizes</option>
-            <option value="Mixed (specify in notes)">Mixed (please specify in notes)</option>
+            <option value="" disabled selected>— Select processing option —</option>
+            <option value="Whole fish (fresh)">🐟 Whole fish (fresh) - best for restaurants</option>
+            <option value="Whole fish (frozen)">❄️ Whole fish (frozen) - longer shelf life</option>
+            <option value="Fillets (boneless)">🔪 Fillets (boneless) - ready to cook</option>
+            <option value="Steaks (cut portions)">🥩 Steaks (cut portions) - uniform sizes</option>
+            <option value="Mixed (specify in notes)">📝 Mixed (please specify in notes)</option>
           </select>
         </div>
       </div>
@@ -525,7 +546,6 @@
       });
     }
 
-    // Initialize EmailJS
     emailjs.init("9M02Bt8C6vjgHs8Ty");
 
     // Set minimum date to today for delivery date picker
@@ -535,7 +555,6 @@
       deliveryDateInput.min = today;
     }
 
-    // Bulk Order Form Submission
     if(bulkOrderForm) {
       bulkOrderForm.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -558,7 +577,7 @@
         const messageContent = `🛒 NEW BULK ORDER REQUEST 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-BUSINESS INFORMATION
+📋 BUSINESS INFORMATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Business/Restaurant: ${businessName}
 Contact Person: ${contactPerson}
@@ -566,7 +585,7 @@ Email: ${email}
 Phone: ${phone}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ORDER DETAILS
+📦 ORDER DETAILS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quantity: ${quantity}
 Delivery Frequency: ${frequency}
@@ -574,12 +593,12 @@ First Delivery Date: ${formattedDate}
 Processing Preference: ${processing}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SPECIAL REQUESTS / NOTES
+📝 SPECIAL REQUESTS / NOTES
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ${specialRequests || 'None specified'}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Please respond within 24 hours
+⏰ Please respond within 24 hours
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Sent from Edible Farms Bulk Order Form`;

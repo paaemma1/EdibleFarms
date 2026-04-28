@@ -7,7 +7,7 @@
   <title>Edible Farms | Bulk Order Request | Wholesale Catfish</title>
   <meta name="description" content="Request bulk catfish orders for your restaurant, hotel, or catering business. Volume discounts, weekly delivery, farm-direct pricing." />
   <meta name="keywords" content="bulk catfish, wholesale catfish, restaurant supply, catfish bulk order, Ghana catfish" />
-  <meta name="robots" content="index, follow" />
+  meta name="robots" content="index, follow" />
   
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -34,10 +34,6 @@
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.02); }
     }
 
     /* Header */
@@ -139,26 +135,50 @@
       font-weight: 600;
       color: var(--accent-green);
     }
-    .form-group input, .form-group select, .form-group textarea {
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
       width: 100%;
       padding: 0.9rem 1rem;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(20, 50, 45, 0.9);
+      border: 1px solid rgba(37,211,102,0.3);
       border-radius: 20px;
       color: white;
       font-family: inherit;
       font-size: 0.95rem;
       transition: all 0.3s;
     }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    /* Fix for dropdown options - makes text readable */
+    .form-group select option {
+      background: #0a2a22;
+      color: white;
+      padding: 10px;
+    }
+    .form-group select option:hover {
+      background: var(--accent-green);
+      color: #061d18;
+    }
+    .form-group input:focus, 
+    .form-group select:focus, 
+    .form-group textarea:focus {
       outline: none;
       border-color: var(--accent-green);
-      background: rgba(255,255,255,0.12);
+      background: rgba(30, 70, 60, 0.95);
       transform: scale(1.01);
     }
-    .form-group input::placeholder, .form-group textarea::placeholder {
-      color: rgba(255,255,255,0.4);
+    .form-group input::placeholder, 
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.5);
     }
+    /* Specific styling for select dropdown text */
+    .form-group select {
+      color: white;
+      cursor: pointer;
+    }
+    .form-group select:invalid {
+      color: rgba(255,255,255,0.6);
+    }
+    
     .submit-btn {
       background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
       border: none;
@@ -388,7 +408,7 @@
         <div class="form-group">
           <label><i class="fas fa-weight-hanging"></i> Estimated Quantity *</label>
           <select id="quantity" required>
-            <option value="">Select quantity range</option>
+            <option value="" disabled selected>Select quantity range</option>
             <option value="25-50 kg (approx 25-50 fish)">25-50 kg (small business)</option>
             <option value="50-100 kg (approx 50-100 fish)">50-100 kg (restaurant weekly)</option>
             <option value="100-250 kg (approx 100-250 fish)">100-250 kg (medium restaurant)</option>
@@ -400,7 +420,7 @@
         <div class="form-group">
           <label><i class="fas fa-calendar-alt"></i> Delivery Frequency *</label>
           <select id="frequency" required>
-            <option value="">Select frequency</option>
+            <option value="" disabled selected>Select frequency</option>
             <option value="One-time order">One-time order (trial)</option>
             <option value="Weekly">Weekly - every week</option>
             <option value="Bi-weekly">Bi-weekly - every 2 weeks</option>
@@ -418,7 +438,7 @@
         <div class="form-group">
           <label><i class="fas fa-utensils"></i> Processing Preference *</label>
           <select id="processing" required>
-            <option value="">Select option</option>
+            <option value="" disabled selected>Select option</option>
             <option value="Whole fish (fresh)">Whole fish (fresh) - best for restaurants</option>
             <option value="Whole fish (frozen)">Whole fish (frozen) - longer shelf life</option>
             <option value="Fillets (boneless)">Fillets (boneless) - ready to cook</option>
@@ -508,6 +528,13 @@
     // Initialize EmailJS
     emailjs.init("9M02Bt8C6vjgHs8Ty");
 
+    // Set minimum date to today for delivery date picker
+    const deliveryDateInput = document.getElementById('deliveryDate');
+    if(deliveryDateInput) {
+      const today = new Date().toISOString().split('T')[0];
+      deliveryDateInput.min = today;
+    }
+
     // Bulk Order Form Submission
     if(bulkOrderForm) {
       bulkOrderForm.addEventListener('submit', async function(e) {
@@ -527,12 +554,11 @@
         bulkSubmitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting Request...';
         bulkSubmitBtn.disabled = true;
         
-        // Format the message for email
         const formattedDate = deliveryDate ? new Date(deliveryDate).toLocaleDateString() : 'Not specified';
-        const messageContent = `🛒 NEW BULK ORDER REQUEST - URGENT 🛒
+        const messageContent = `🛒 NEW BULK ORDER REQUEST 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📋 BUSINESS INFORMATION
+BUSINESS INFORMATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Business/Restaurant: ${businessName}
 Contact Person: ${contactPerson}
@@ -540,7 +566,7 @@ Email: ${email}
 Phone: ${phone}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📦 ORDER DETAILS
+ORDER DETAILS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quantity: ${quantity}
 Delivery Frequency: ${frequency}
@@ -548,12 +574,12 @@ First Delivery Date: ${formattedDate}
 Processing Preference: ${processing}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📝 SPECIAL REQUESTS / NOTES
+SPECIAL REQUESTS / NOTES
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ${specialRequests || 'None specified'}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⏰ Please respond within 24 hours
+Please respond within 24 hours
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Sent from Edible Farms Bulk Order Form`;
